@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reycers Logistics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-slate-900 text-white min-h-screen p-5">
+        <h1 class="text-2xl font-bold mb-8">🚚 Reycers</h1>
+
+        <nav class="space-y-2">
+            <a href="/" class="block p-2 rounded hover:bg-blue-600">Dashboard</a>
+            <a href="/inventario" class="block p-2 rounded hover:bg-blue-600">Inventario</a>
+            <a href="/envios" class="block p-2 rounded hover:bg-blue-600">Envíos</a>
+            <a href="/clientes" class="block p-2 rounded hover:bg-blue-600">Clientes</a>
+        </nav>
+    </div>
+
+    <!-- Contenido -->
+    <div class="flex-1 p-6">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>

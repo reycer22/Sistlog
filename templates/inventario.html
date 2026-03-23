@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">Inventario</h1>
+
+<table class="w-full bg-white rounded-2xl shadow overflow-hidden">
+    <thead class="bg-slate-200">
+        <tr>
+            <th class="p-3 text-left">Producto</th>
+            <th class="p-3 text-left">Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="border-t">
+            <td class="p-3">Laptop</td>
+            <td class="p-3 text-green-600 font-bold">50</td>
+        </tr>
+
+        <tr class="border-t">
+            <td class="p-3">Mouse</td>
+            <td class="p-3 text-red-500 font-bold">5</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

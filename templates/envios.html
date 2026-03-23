@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-4">Seguimiento de Envío</h1>
+
+<div class="bg-white p-4 rounded-2xl shadow mb-4">
+    <p><strong>Cliente:</strong> Kelly Alfonzo</p>
+    <p><strong>Ruta:</strong> Caracas → Valencia</p>
+    <p><strong>Estado:</strong> <span class="text-blue-600 font-bold">En tránsito</span></p>
+</div>
+
+<div id="map" class="rounded-2xl shadow" style="height: 500px;"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+var map = L.map('map').setView([10.3, -67.5], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+.addTo(map);
+
+// Coordenadas reales
+var caracas = [10.48801, -66.87919];
+var valencia = [10.16153, -68.00044];
+
+// Ruta simulada (más puntos = más real)
+var ruta = [
+    caracas,
+    [10.40, -67.20],
+    [10.30, -67.60],
+    valencia
+];
+
+// Línea de ruta
+var polyline = L.polyline(ruta, {
+    color: '#1d4ed8',
+    weight: 5
+}).addTo(map);
+
+// Marcadores
+L.marker(caracas).addTo(map)
+.bindPopup("📦 Almacén - Caracas")
+.openPopup();
+
+L.marker(valencia).addTo(map)
+.bindPopup("🏠 Destino - Kelly Alfonzo");
+
+// Icono camión
+var camionIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/743/743922.png',
+    iconSize: [40, 40]
+});
+
+// Camión animado
+var camion = L.marker(caracas, {icon: camionIcon}).addTo(map);
+
+var i = 0;
+setInterval(() => {
+    if (i < ruta.length) {
+        camion.setLatLng(ruta[i]);
+        i++;
+    }
+}, 1500);
+</script>
+
+{% endblock %}
