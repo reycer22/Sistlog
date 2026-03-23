@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__)
 
@@ -17,8 +18,6 @@ def envios():
 @app.route("/clientes")
 def clientes():
     return render_template("clientes.html")
-
-import os
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
